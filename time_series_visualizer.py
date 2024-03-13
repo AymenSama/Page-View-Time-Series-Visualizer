@@ -5,10 +5,11 @@ from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 
 # Import data (Make sure to parse dates. Consider setting index column to 'date'.)
-df = None
+df = pd.read_csv("fcc-forum-pageviews.csv", parse_dates=True, index_col="date")
 
 # Clean data
-df = None
+number_of_drops = round((df["value"].count() * 2.5) / 100)
+df = df.drop(df.nlargest(number_of_drops, "value").index).drop(df.nsmallest(number_of_drops, "value").index)
 
 
 def draw_line_plot():
