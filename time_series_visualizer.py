@@ -14,10 +14,11 @@ df = df.drop(df.nlargest(number_of_drops, "value").index).drop(df.nsmallest(numb
 
 def draw_line_plot():
     # Draw line plot
-
-
-
-
+    fig = plt.figure(figsize=(15,5))
+    plt.title("Daily freeCodeCamp Forum Page Views 5/2016-12/2019")
+    plt.xlabel("Date")
+    plt.ylabel("Page Views")
+    plt.plot(df)
 
     # Save image and return fig (don't change this part)
     fig.savefig('line_plot.png')
